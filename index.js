@@ -18,11 +18,11 @@ const { databaseConfig, serverConfig } = require('./config');
 
 const { checkAirQualityParis } = require('./cron/checkAirQualityParis');
 
-app.listen(serverConfig.port, function(){
-    console.log('listening on port ' + serverConfig.port);
-})
+app.listen(serverConfig.port, function () {
+	console.log('listening on port ' + serverConfig.port);
+});
 
-app.use("/api", routes);
+app.use('/api', routes);
 
 checkAirQualityParis();
 
@@ -31,6 +31,5 @@ mongoose.connect(databaseConfig.uri);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('Connected to MongoDB');
+	console.log('Connected to MongoDB');
 });
-
